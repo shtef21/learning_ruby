@@ -27,3 +27,9 @@ docker run -it --name --learning-ruby-container learning-ruby
 ## TODO
 - [ ] Try to run Dockerfile
 - [ ] Uncomment Gemfile in Dockerfile and use it
+
+
+
+## Notes
+
+Tutorial used in /learning-ruby - [Tutorial](https://www.ruby-lang.org/en/documentation/quickstart/)
