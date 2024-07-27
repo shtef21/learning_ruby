@@ -9,11 +9,14 @@ WORKDIR /app
 
 # # throw errors if Gemfile has been modified since Gemfile.lock
 # RUN bundle config --global frozen 1
-
-COPY Gemfile Gemfile.lock ./
-RUN bundle install
+#
+# COPY Gemfile Gemfile.lock ./
+# RUN bundle install
 
 COPY . .
 
-CMD [ "./hello_world.rb" ]
+# Make sure the script is executable
+RUN chmod +x ./learning-ruby/main.rb
 
+# Run the Ruby script
+CMD ["ruby", "./learning-ruby/main.rb"]

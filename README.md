@@ -19,13 +19,15 @@ ruby main.rb
 
 #### Run using Dockerfile
 ```sh
-docker build -t learning-ruby .
-docker run -it --name --learning-ruby-container learning-ruby
+# Build the image (add -q before -t for quiet build)
+docker build -t ruby-awe .
+# Run the image (add --rm to exit after stop)
+docker run -it ruby-awe
 ```
 
 
 ## TODO
-- [ ] Try to run Dockerfile
+- [x] Try to run Dockerfile
 - [ ] Uncomment Gemfile in Dockerfile and use it
 
 
