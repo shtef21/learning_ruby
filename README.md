@@ -25,6 +25,14 @@ docker build -t ruby-awe .
 docker run -it ruby-awe
 ```
 
+#### Ruby stuff
+```sh
+# Install Ruby Gems
+# Install rails
+gem install --user-install rails
+```
+
+
 
 ## TODO
 - [x] Try to run Dockerfile
