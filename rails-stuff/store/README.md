@@ -2,7 +2,7 @@
 
 This project is based on the following tutorial: https://guides.rubyonrails.org/getting_started.html
 
-Next step: 4.1
+# Next step of tutorial: 4.1
 
 
 ## Initial setup (from within /store)
