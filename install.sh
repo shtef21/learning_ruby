@@ -1,34 +1,18 @@
 
-# Install build-essential
+### Install Ruby
+sudo apt-get install build-essential rustc libssl-dev libyaml-dev zlib1g-dev libgmp-dev
 
-# The `build-essential` package is a meta-package in Debian and Ubuntu that includes essential tools for software development
-# Compiler: gcc, g++
-# Make: make
+## For some reason Mise version manager is needed
+curl https://mise.run | sh
+eval "$(~/.local/bin/mise activate bash)"
+# Add it to ~/.bashrc
+#eval "$(~/.local/bin/mise activate bash)" >> ~/.bashrc
+#source ~/.bashrc
 
-```sh
-sudo apt-get update
-sudo apt-get install build-essential
-```
-
-
-# Install and init rbenv
-
-```sh
-sudo apt-get install rbenv
-rbenv init
-# Reload console
-```
+## Install Ruby globally with Mise
+mise use -g ruby@3
 
 
-# Run ruby!
 
-```sh
-ruby console-stuff/main.rb
-```
-
-
-# Install rails
-
-```sh
-```
-
+### Install Rails
+gem install rails

@@ -1,13 +1,13 @@
 # ruby_awe
-Audio Web Editor written using Ruby on Rails
+Learning Ruby and Ruby on Rails
 
 
 ## Desc
-This repo is used as a demo project for learning Ruby and Ruby on Rails.
+This repo is used as a demo projects repo for learning Ruby and Ruby on Rails.
 
-And also because the idea is cool... :)
+Ruby version: 3.4.2
 
-Ruby version: 3.2.1
+Rails version: 8.0.2
 
 
 ## How-tos

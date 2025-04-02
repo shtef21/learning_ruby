@@ -1,1 +1,19 @@
 .ignored
+
+# Ignore bundler config
+rails-stuff/store/.bundle
+
+# Ignore ENV files
+/.env
+
+# Ignore temp files
+rails-stuff/store/tmp/
+
+# Ignore log files
+rails-stuff/store/log/
+
+# Ignore storage (uploaded files in development and any SQLite databases).
+rails-stuff/store/storage/
+
+# Ignore assets
+rails-stuff/store/public/assets
