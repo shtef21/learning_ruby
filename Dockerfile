@@ -10,7 +10,7 @@ WORKDIR /app
 COPY . .
 
 # Make sure the script is executable
-RUN chmod +x ./learning-ruby/main.rb
+RUN chmod +x ./learning-ruby/main_1.rb
 
 # Run the Ruby script
-CMD ["ruby", "./learning-ruby/main.rb"]
+CMD ["ruby", "./learning-ruby/main_1.rb"]

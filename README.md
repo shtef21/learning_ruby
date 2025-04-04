@@ -14,7 +14,7 @@ Rails version: 8.0.2
 
 #### Run using CLI
 ```sh
-ruby main.rb
+ruby main_1.rb
 ```
 
 #### Run using Dockerfile
