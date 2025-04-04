@@ -16,3 +16,14 @@ mise use -g ruby@3
 
 ### Install Rails
 gem install rails
+
+### Install Gems (within proj directory)
+#bundle install
+
+### Start rails app (within proj directory) using binstubs
+### binstubs - Binstubs are wrapper scripts around executables
+###   (sometimes referred to as "binaries", although they
+###   don't have to be compiled) whose purpose is to prepare
+###   the environment before dispatching the call to the
+###   original executable.
+#bin/rails server
