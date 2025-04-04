@@ -27,3 +27,6 @@ gem install rails
 ###   the environment before dispatching the call to the
 ###   original executable.
 #bin/rails server
+
+### To start interactive ruby, write this:
+# irb
