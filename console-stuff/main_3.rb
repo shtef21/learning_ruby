@@ -91,7 +91,11 @@ end
 
 
 # Run if main_3 has been directly called
+#   __FILE__ - magic variable that contains the name of the current file
+#   $0 - name of the file used to start the program
 if __FILE__ == $0
+  puts "Running code directly in main_3.rb"
+
   mg = MegaGreeter.new
   #mg.respond_to?(:names=)  # If contanis names setter
   mg.say_hi
