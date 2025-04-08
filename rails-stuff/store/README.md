@@ -103,6 +103,10 @@ Now do the migration using `bin/rails db:migrate`
 store(dev)> Product.column_names
 => ["id", "name", "created_at", "updated_at"]
 
+Rails asked the database for column information above and used that information to define attributes on the Product class dynamically so you don't have to manually define each of them. This is one example of how Rails makes development a breeze
+
+
+Next step: 7.1.
 
 
 <!-- This README would normally document whatever steps are necessary to get the
