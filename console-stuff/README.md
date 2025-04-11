@@ -82,3 +82,17 @@ class MyArray
   end
 end
 
+MyArray[]    # Output: "Square brackets called through class name"
+obj = MyArray.new
+obj[]        # Output: "Square brackets called through an object"
+
+
+## Comments
+
+```ruby
+# Single line comments
+
+=begin
+Multiline comment
+=end
+```
