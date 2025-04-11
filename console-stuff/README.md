@@ -96,3 +96,24 @@ obj[]        # Output: "Square brackets called through an object"
 Multiline comment
 =end
 ```
+
+
+## each_with... methods
+
+Useful for traversing
+
+```ruby
+["a", "b", "c"].each_with_index do |val, idx|
+  puts "#{idx}: #{val}"
+end
+# Output:
+# 0: a
+# 1: b
+# 2: c
+
+[1, 2, 3].each_with_object([]) do |num, arr|
+  arr << num * 2
+end
+# => [2, 4, 6]
+
+```
