@@ -19,16 +19,15 @@ Output: 25 (since 1 + 3 + 5 + 7 + 9 = 25)
 
 print "Input a number: "
 num = gets.to_i
-sum = 0
 
 if num >= 1
-  print "Odd numbers:"
-  (1..num).each_slice(2) {
-      |odd, even|
-      sum += odd
-      print " #{odd}"
-  }
-  puts "\nSum: #{sum}"
+  odd_nums = []
+  sum = 0
+  (1..num).each_slice(2) { |odd, even| odd_nums << odd }
+  sum = odd_nums.sum
+  
+  puts "Odd numbers: #{odd_nums}"
+  puts "Sum: #{sum}"
 
 else
   puts "Invalid input. Please enter a number in range [1, Infinity>"
