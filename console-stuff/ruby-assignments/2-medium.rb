@@ -17,3 +17,13 @@ Input: "A man, a plan, a canal, Panama"
 Output: True (ignoring punctuation and spaces, it’s a palindrome)
 =end
 
+puts "Welcome to the palindrome checker."
+puts "Palindrome - string read the same backwards, counting only alphanumeric characters."
+print "\nYour input: "
+
+input_str = gets.chomp
+input_raw = input_str.downcase.gsub(/[^0-9a-z]/, "")
+result = input_raw == input_raw.reverse
+
+puts "Processing...\n\t \"#{input_raw}\" == \"#{input_raw.reverse}\""
+puts "Output: #{result}"
