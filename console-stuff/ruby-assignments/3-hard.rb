@@ -60,7 +60,7 @@ class TicTacToe
       puts
    end
 
-   def draw
+   def draw_board
       puts " #{@grid[0..2].join(' | ')}"
       puts "-----------"
       puts " #{@grid[3..5].join(' | ')} "
@@ -110,10 +110,10 @@ class TicTacToe
 
    def start_game_loop
       winner = nil
-      self.draw
+      self.draw_board
       while winner == nil
          self.take_turn
-         self.draw
+         self.draw_board
          winner = self.check_game_status
       end
       puts "Game over!"
