@@ -71,7 +71,7 @@ class TicTacToe
 
    def take_turn
       next_pl = @next_player == "X" ? 1 : 2
-      print "Player #{next_pl} turn (1-9):"
+      print "Player #{next_pl} turn (1-9): "
       turn = gets.chomp.to_i
 
       while @grid[turn - 1] != " "
@@ -83,32 +83,60 @@ class TicTacToe
       @next_player = @next_player == "O" ? "X" : "O"
    end
 
-   def can_continue
-      @grid.find { |ch| ch == " " }
-   end
-
    # Check if winner found:
    #   return "X" -> player 1 wins
    #   return "O" -> player 2 wins
    #   return " " -> no winner
    #   return nil -> game not over yet
-   def check_win
-      # TODO: implement check win
+   def check_game_status
+      win_combos = [
+         [0, 1, 2], [3, 4, 5], [6, 7, 8],
+         [0, 3, 6], [1, 4, 7], [2, 5, 8],
+         [0, 4, 8], [2, 4, 6]
+      ]
+      win_combos.each do |combo|
+         if self[*combo] == "XXX"
+            return "X"
+         elsif self[*combo] == "OOO"
+            return "O"
+         end
+      end
+      if @grid.find { |ch| ch == " " }
+         return nil
+      else
+         return " "
+      end
    end
 
    def start_game_loop
-     while self.can_continue
+      winner = nil
+      self.draw
+      while winner == nil
          self.take_turn
          self.draw
-     end
-     puts "Game over!"
+         winner = self.check_game_status
+      end
+      puts "Game over!"
+
+      if winner == "X"
+         puts "Winner: PLAYER 1 (X)"
+      elsif winner == "O"
+         puts "Winner: PLAYER 2 (O)"
+      else
+         puts "No winner, it's a tie!"
+      end
+   end
+
+   # Return a grid combo
+   def [](arg1, arg2, arg3)
+      @grid[arg1] + @grid[arg2] + @grid[arg3]
    end
 end
 
 puts "Tic-Tac-Toe game starting..."
 game = TicTacToe.new
+
 game.intro_grid
 game.start_game_loop
-
 
 
