@@ -133,10 +133,16 @@ class TicTacToe
    end
 end
 
-puts "Tic-Tac-Toe game starting..."
-game = TicTacToe.new
 
-game.intro_grid
-game.start_game_loop
+play_game = "y"
 
+while play_game.start_with?(/y/i)
+   puts "Tic-Tac-Toe game starting..."
+   game = TicTacToe.new
 
+   game.intro_grid
+   game.start_game_loop
+
+   print "Play again (y/n)? "
+   play_game = gets.chomp
+end
