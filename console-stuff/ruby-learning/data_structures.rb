@@ -33,7 +33,8 @@ Operations on arrays:
   .with_object(Hash.new(0)) { |ch, hash| hash[ch] += 1 }
 # Explanation:
 #   Iterate each char with a single hash
-#   and fill it with char instance count
+#   and fill it with char instance count.
+#   Create a hash object with default value 8
 # {"a"=>3, "b"=>1, "c"=>1, "d"=>1}
 =begin
 Operations on hashes:
