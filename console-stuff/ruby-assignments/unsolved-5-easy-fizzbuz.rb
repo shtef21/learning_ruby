@@ -28,3 +28,38 @@ Prime
 FizzBuzz
 ...
 =end
+
+max = 100
+
+def is_prime(num)
+  if num == 2
+    return true
+  end
+  if num == 1 or num.even?
+    return false
+  end
+  (3..Math.sqrt(num)).step(2) do |i|
+    if num % i == 0
+      return false
+    end
+  end
+  return true
+end
+
+(1..max).each do |num|
+  fbstr = ""
+  if num % 3 == 0
+    fbstr << "Fizz"
+  end
+  if num % 5 == 0
+    fbstr << "Buzz"
+  end
+
+  if is_prime num
+    puts "Prime"
+  elsif not fbstr.empty?
+    puts fbstr
+  else
+    puts num
+  end
+end
