@@ -84,3 +84,69 @@ def chessboard_valid?(board)
 
   return [true, "Valid board state"]
 end
+
+# Board 1 – Valid Standard Start
+chessboard_1 = [
+  ["bR", "bN", "bB", "bQ", "bK", "bB", "bN", "bR"],
+  ["bP", "bP", "bP", "bP", "bP", "bP", "bP", "bP"],
+  [nil, nil, nil, nil, nil, nil, nil, nil],
+  [nil, nil, nil, nil, nil, nil, nil, nil],
+  [nil, nil, nil, nil, nil, nil, nil, nil],
+  [nil, nil, nil, nil, nil, nil, nil, nil],
+  ["wP", "wP", "wP", "wP", "wP", "wP", "wP", "wP"],
+  ["wR", "wN", "wB", "wQ", "wK", "wB", "wN", "wR"]
+]
+puts "Chessboard 1 result: #{chessboard_valid?(chessboard_1)}"
+
+# Board 2 – Invalid (Too Many Kings)
+chessboard_2 = [
+  ["bK", "bK", nil, nil, nil, nil, nil, nil],
+  ["bP", nil, nil, nil, nil, nil, nil, nil],
+  [nil, nil, nil, nil, nil, nil, nil, nil],
+  [nil, nil, nil, nil, nil, nil, nil, nil],
+  [nil, nil, nil, nil, nil, nil, nil, nil],
+  [nil, nil, nil, nil, nil, nil, nil, nil],
+  ["wP", nil, nil, nil, nil, nil, nil, nil],
+  ["wK", "wK", nil, nil, nil, nil, nil, nil]
+]
+puts "Chessboard 2 result: #{chessboard_valid?(chessboard_2)}"
+
+# Board 3 – Invalid (Too Many Pawns)
+chessboard_3 = [
+  ["bR", "bN", "bB", "bQ", "bK", "bB", "bN", "bR"],
+  ["bP", "bP", "bP", "bP", "bP", "bP", "bP", "bP"],
+  ["bP", "bP", "bP", "bP", "bP", "bP", "bP", "bP"],  # Extra row of pawns
+  [nil, nil, nil, nil, nil, nil, nil, nil],
+  [nil, nil, nil, nil, nil, nil, nil, nil],
+  [nil, nil, nil, nil, nil, nil, nil, nil],
+  ["wP", "wP", "wP", "wP", "wP", "wP", "wP", "wP"],
+  ["wR", "wN", "wB", "wQ", "wK", "wB", "wN", "wR"]
+]
+puts "Chessboard 3 result: #{chessboard_valid?(chessboard_3)}"
+
+# Board 4 – Valid Custom Game State
+chessboard_4 = [
+  ["bR", nil, nil, nil, "bK", nil, nil, "bR"],
+  [nil, "bP", nil, nil, nil, nil, "bP", nil],
+  [nil, nil, "wN", nil, nil, nil, nil, nil],
+  [nil, nil, nil, "wP", nil, nil, nil, nil],
+  [nil, nil, nil, nil, "bP", nil, nil, nil],
+  [nil, nil, nil, nil, nil, "wB", nil, nil],
+  ["wP", "wP", "wP", nil, "wP", "wP", "wP", "wP"],
+  ["wR", "wN", "wB", "wQ", "wK", nil, nil, "wR"]
+]
+puts "Chessboard 4 result: #{chessboard_valid?(chessboard_4)}"
+
+# Board 5 – Valid Custom Game State
+chessboard_5 = [
+  ["bR", "bN", "bB", "bQ", nil, "bB", "bN", "bR"],
+  ["bP", "bP", "bP", "bP", "bP", "bP", "bP", "bP"],
+  [nil, nil, nil, nil, nil, nil, nil, nil],
+  [nil, nil, nil, nil, nil, nil, nil, nil],
+  [nil, nil, nil, nil, nil, nil, nil, nil],
+  [nil, nil, nil, nil, nil, nil, nil, nil],
+  ["wP", "wP", "wP", "wP", "wP", "wP", "wP", "wP"],
+  ["wR", "wN", "wB", "wQ", "wK", "wB", "wN", "wR"]
+]
+puts "Chessboard 5 result: #{chessboard_valid?(chessboard_5)}"
+
