@@ -14,69 +14,6 @@ A 2D array like:
 Output:
 "Valid" or "Invalid: too many kings"
 
-
-BONUS - here are 5 possible inputs:
-  Board 1 – Valid Standard Start
-  [
-    ["bR", "bN", "bB", "bQ", "bK", "bB", "bN", "bR"],
-    ["bP", "bP", "bP", "bP", "bP", "bP", "bP", "bP"],
-    [nil, nil, nil, nil, nil, nil, nil, nil],
-    [nil, nil, nil, nil, nil, nil, nil, nil],
-    [nil, nil, nil, nil, nil, nil, nil, nil],
-    [nil, nil, nil, nil, nil, nil, nil, nil],
-    ["wP", "wP", "wP", "wP", "wP", "wP", "wP", "wP"],
-    ["wR", "wN", "wB", "wQ", "wK", "wB", "wN", "wR"]
-  ]
-
-  Board 2 – Invalid (Too Many Kings)
-  [
-    ["bK", "bK", nil, nil, nil, nil, nil, nil],
-    ["bP", nil, nil, nil, nil, nil, nil, nil],
-    [nil, nil, nil, nil, nil, nil, nil, nil],
-    [nil, nil, nil, nil, nil, nil, nil, nil],
-    [nil, nil, nil, nil, nil, nil, nil, nil],
-    [nil, nil, nil, nil, nil, nil, nil, nil],
-    ["wP", nil, nil, nil, nil, nil, nil, nil],
-    ["wK", "wK", nil, nil, nil, nil, nil, nil]
-  ]
-
-  Board 3 – Invalid (Too Many Pawns)
-  [
-    ["bR", "bN", "bB", "bQ", "bK", "bB", "bN", "bR"],
-    ["bP", "bP", "bP", "bP", "bP", "bP", "bP", "bP"],
-    ["bP", "bP", "bP", "bP", "bP", "bP", "bP", "bP"],  # Extra row of pawns
-    [nil, nil, nil, nil, nil, nil, nil, nil],
-    [nil, nil, nil, nil, nil, nil, nil, nil],
-    [nil, nil, nil, nil, nil, nil, nil, nil],
-    ["wP", "wP", "wP", "wP", "wP", "wP", "wP", "wP"],
-    ["wR", "wN", "wB", "wQ", "wK", "wB", "wN", "wR"]
-  ]
-
-  Board 4 – Valid Custom Game State
-  [
-    ["bR", nil, nil, nil, "bK", nil, nil, "bR"],
-    [nil, "bP", nil, nil, nil, nil, "bP", nil],
-    [nil, nil, "wN", nil, nil, nil, nil, nil],
-    [nil, nil, nil, "wP", nil, nil, nil, nil],
-    [nil, nil, nil, nil, "bP", nil, nil, nil],
-    [nil, nil, nil, nil, nil, "wB", nil, nil],
-    ["wP", "wP", "wP", nil, "wP", "wP", "wP", "wP"],
-    ["wR", "wN", "wB", "wQ", "wK", nil, nil, "wR"]
-  ]
-
-  Board 5 – Valid Custom Game State
-  [
-    ["bR", "bN", "bB", "bQ", nil, "bB", "bN", "bR"],
-    ["bP", "bP", "bP", "bP", "bP", "bP", "bP", "bP"],
-    [nil, nil, nil, nil, nil, nil, nil, nil],
-    [nil, nil, nil, nil, nil, nil, nil, nil],
-    [nil, nil, nil, nil, nil, nil, nil, nil],
-    [nil, nil, nil, nil, nil, nil, nil, nil],
-    ["wP", "wP", "wP", "wP", "wP", "wP", "wP", "wP"],
-    ["wR", "wN", "wB", "wQ", "wK", "wB", "wN", "wR"]
-  ]
-=end
-
 =begin
 Help:
   b - black
@@ -89,34 +26,59 @@ Help:
   K - King (must equal 1 for each color)
 =end
 
+# Return array of [VALIDITY, DESCRIPTION] for a chesspiece
 def chesspiece_valid?(name, count)
   if name.length == 2 and name.start_with?("b", "w")
+    color = name.start_with?("b") ? "black" : "white"
+
     if name.end_with?("P")
-      return count <= 8
-    elsif name.end_with?("R", "N", "B")
-      return count <= 2
+      valid = count <= 8
+      return [valid, valid ? nil : "Too many #{color} pawns"]
+    elsif name.end_with?("R")
+      valid = count <= 2
+      return [valid, valid ? nil : "Too many #{color} rooks"]
+    elsif name.end_with?("N")
+      valid = count <= 2
+      return [valid, valid ? nil : "Too many #{color} knights"]
+    elsif name.end_with?("B")
+      valid = count <= 2
+      return [valid, valid ? nil : "Too many #{color} bishops"]
     elsif name.end_with?("Q")
-      return count <= 1
+      valid = count <= 1
+      return [valid, valid ? nil : "Too many #{color} queens"]
     elsif name.end_with?("K")
-      return count == 1
+      valid = count == 1
+      return [
+        count == 1,
+        count > 1 ? "Too many #{color} kings"
+          : count < 1 ? "Not enough #{color} kings"
+          : ""
+        ]
+      # Else returns [false, "Invalid chesspiece name #{name}"]
     end
   end
-  return false
+  return [false, "Invalid chesspiece name '#{name}'"]
 end
 
 # Returns array of [VALIDITY (true/false), DESCRIPTION (string)]
-def chesboard_valid?(board)
+def chessboard_valid?(board)
   # Check board format
-  if board.respond_to?(:length) || board.length != 8
+  if not board.respond_to?(:length) || board.length != 8
     return [false, "Invalid board size"]
   elsif board.any? { |row| not row.respond_to?(:length) || row.length != 8 }
     return [false, "Invalid board size"]
   end
 
-  # TODO: finish
+  cp_counter = Hash.new(0)
   board.each do |row|
-    [].each do |piece|
+    row.each do |piece|
       next if piece == nil
+
+      cp_counter[piece] += 1
+      piece_valid, err_msg = *chesspiece_valid?(piece, cp_counter[piece])
+      if not piece_valid
+        return [false, err_msg]
+      end
     end
   end
 
