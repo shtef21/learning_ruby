@@ -1,4 +1,4 @@
-# ruby_awe
+# learning_ruby
 Learning Ruby and Ruby on Rails
 
 
