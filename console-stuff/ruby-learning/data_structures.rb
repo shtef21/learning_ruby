@@ -26,6 +26,35 @@ Operations on arrays:
   delete	O(n)
 =end
 
+# ----- Using Array.new Method
+
+# Without Arguments
+arr = Array.new
+puts arr.size # Output: 0
+
+# With Size Argument
+arr = Array.new(7)
+puts arr.length # Output: 7
+
+# With Size and Default Value
+arr = Array.new(4, "GFG")
+puts "#{arr}" # Output: ["GFG", "GFG", "GFG", "GFG"]
+
+# Using Literal Constructor []
+arr = ['a', 'b', 'c', 'd', 'e', 'f']
+puts "#{arr}" # Output: ["a", "b", "c", "d", "e", "f"]
+puts arr.size # Output: 6
+puts arr.length # Output: 6
+
+#Using Range
+arr1 = ('1'..'6').to_a
+puts "#{arr1}" # Output: ["1", "2", "3", "4", "5", "6"]
+arr2 = *'11'..'15'
+puts "#{arr2}" # Output: ["11", "12", "13", "14", "15"]
+
+# These methods provide flexibility in creating arrays with different initial values and sizes.
+
+
 
 # HASHES
 "aaabcd"
