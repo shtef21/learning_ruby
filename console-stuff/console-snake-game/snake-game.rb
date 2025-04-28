@@ -12,17 +12,17 @@ class SnakeGame
 
     # Fill borders
     wall = '█'
-    (0...width).each do |w|
+    (0...@map_w).each do |w|
       @map[0][w] = wall
-      @map[height-1][w] = wall
+      @map[@map_h-1][w] = wall
     end
-    (0...height).each do |h|
+    (0...@map_h).each do |h|
       @map[h][0] = wall
-      @map[h][width-1] = wall
+      @map[h][@map_w-1] = wall
     end
 
     # Create snake
-    @snake = Snake.new(3, height, width)
+    @snake = Snake.new(3, @map_h, @map_w)
 
     # Add food
     add_food_to_map
