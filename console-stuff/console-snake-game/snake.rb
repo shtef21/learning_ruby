@@ -12,45 +12,49 @@ class Snake
     end
   end
 
-  def is_snake_head(h, w)
+  def get_head_pos
+    @positions[0].clone
+  end
+
+  def is_head(h, w)
     @positions[0] == [h, w]
   end
 
-  def is_snake_body(h, w)
+  def is_body(h, w)
     @positions[1..].find { |pos| pos == [h, w] }
   end
 
-  # Move snake and return true if moved or false if not
-  def move(direction)
-    ((@positions.length-1).downto(1)).each do |i|
-      puts "@positions[#{i}] = #{@positions[i-1].to_s}"
-      @positions[i] = @positions[i-1].clone
-    end
+  # Is head or body
+  def is_snake_pos(h, w)
+    @positions.find { |pos| pos == [h, w] }
+  end
 
-    next_dir = @positions[0].clone
-    case direction.downcase
-    when 'w'
-      next_dir[0] -= 1
-    when 'a'
-      next_dir[1] -= 1
-    when 's'
-      next_dir[0] += 1
-    when 'd'
-      next_dir[1] += 1
-    else
-      return false
-    end
+  def move(next_pos, next_is_food)
 
-    if is_snake_body(next_dir[0], next_dir[1])
+    if @positions[1..-2].find { |pos| pos == next_pos }
       # Cannot move into itself
       return false
-    elsif next_dir[0] > @max_h || next_dir[0] < @min_h ||
-      next_dir[1] > @max_w || next_dir[1] < @min_w
+    elsif next_pos[0] > @max_h || next_pos[0] < @min_h ||
+      next_pos[1] > @max_w || next_pos[1] < @min_w
       # Cannot move into walls
+      return false
+    elsif @positions[..-2].find { |body_pos| body_pos == next_pos }
+      # Cannot move into body
       return false
     end
 
-    @positions[0] = next_dir
+    # Extend tail if ate food
+    if next_is_food
+      @positions << @positions.last.clone
+    end
+
+    # Move body
+    (1...@positions.length).reverse_each do |i|
+      @positions[i] = @positions[i-1].clone
+    end
+    
+    # Finally move head
+    @positions[0] = next_pos
     return true
   end
 end
