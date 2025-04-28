@@ -12,11 +12,11 @@ class SnakeGame
 
     # Fill borders
     wall = '█'
-    (0..(width-1)).each do |w|
+    (0...width).each do |w|
       @map[0][w] = wall
       @map[height-1][w] = wall
     end
-    (0..(height-1)).each do |h|
+    (0...height).each do |h|
       @map[h][0] = wall
       @map[h][width-1] = wall
     end
