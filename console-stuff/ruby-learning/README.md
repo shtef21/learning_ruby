@@ -18,17 +18,20 @@ additionally.
 Symbols are something like a string, but internalized.
 Or a constant string.
 
-Uses more memory for both objects:
+```rb
+# Uses more memory for both objects:
 "first".object_id != "first".object_id
 
-Are the same object:
+# Are the same object:
 :second.object_id == :second.object_id
+```
 
 
 ## attr_reader, attr_writer and attr_accessor
 
 ### Getter
 
+```rb
 class Person
   def name
     @name # simply returning an instance variable @name
@@ -38,9 +41,11 @@ end
 person = Person.new
 person.name            # => does not throw error
 person.name = "Dennis" # => no method error
+```
 
 ### Getter & setter
 
+```rb
 class Person2
   def name
     @name
@@ -53,25 +58,29 @@ end
 person2 = Person2.new
 person2.name = 'Dennis'
 person2.name          # => returns "Dennis"
+```
 
 ### In short
 
+```rb
 class Person3
   attr_reader :name
   attr_writer :name
 end
 
-Or in simpler terms:
+# Or in simpler terms:
 
 class Person4
   attr_accessor :name
 end
 
-This reads as "Call a method attr_accessor and send it a :name argument"
+# This reads as "Call a method attr_accessor and send it a :name argument"
+```
 
 
 ## Square brackets []
 
+```rb
 class MyArray
   def self.[]
     puts "Square brackets called through class name"
@@ -85,6 +94,7 @@ end
 MyArray[]    # Output: "Square brackets called through class name"
 obj = MyArray.new
 obj[]        # Output: "Square brackets called through an object"
+```
 
 
 ## Comments
